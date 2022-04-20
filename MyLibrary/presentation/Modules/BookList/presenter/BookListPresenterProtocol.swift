@@ -9,4 +9,6 @@ import Foundation
 
 protocol BookListPresenterProtocol: ObservableObject {
     var viewModel: BookListViewModel { get set }
+    
+    func search()
 }

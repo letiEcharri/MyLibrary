@@ -13,12 +13,21 @@ struct BookListContentView<T: BookListPresenterProtocol>: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(searching: $presenter.viewModel.searching, mainList: $presenter.viewModel.books, searchedList: $presenter.viewModel.searchedBookList)
-                    .navigationTitle("MyLibrary")
+                HStack {
+                    TextField("Search results for books, authors, and more",
+                              text: $presenter.viewModel.searchedText)
+                        .accentColor(.black)
+                        .foregroundColor(.black)
+                        .onSubmit {
+                            self.presenter.search()
+                        }
+                }
+                .frame(height: 50)
                 List(presenter.viewModel.searchedBookList, id: \.self) { book in
                     Text(book)
                 }
             }
+            .navigationTitle("MyLibrary")
         }
     }
 }
@@ -33,4 +42,5 @@ struct BookListViewModel {
     var books: [String]
     var searchedBookList = [String]()
     var searching = false
+    var searchedText: String
 }

@@ -18,6 +18,7 @@
 		367AE640280EFA5F001DB560 /* BookListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE63F280EFA5F001DB560 /* BookListPresenterProtocol.swift */; };
 		367AE642280EFA8F001DB560 /* BookListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE641280EFA8F001DB560 /* BookListPresenter.swift */; };
 		367AE644280F04B3001DB560 /* BookListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE643280F04B3001DB560 /* BookListFactory.swift */; };
+		367AE646280F0DF4001DB560 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE645280F0DF4001DB560 /* SearchBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		367AE63F280EFA5F001DB560 /* BookListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListPresenterProtocol.swift; sourceTree = "<group>"; };
 		367AE641280EFA8F001DB560 /* BookListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListPresenter.swift; sourceTree = "<group>"; };
 		367AE643280F04B3001DB560 /* BookListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListFactory.swift; sourceTree = "<group>"; };
+		367AE645280F0DF4001DB560 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				367AE63D280EF945001DB560 /* SearchBar.swift */,
+				367AE645280F0DF4001DB560 /* SearchBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				367AE639280EF37D001DB560 /* BookListContentView.swift in Sources */,
 				367AE63E280EF945001DB560 /* SearchBar.swift in Sources */,
 				367AE642280EFA8F001DB560 /* BookListPresenter.swift in Sources */,
+				367AE646280F0DF4001DB560 /* SearchBarView.swift in Sources */,
 				367AE640280EFA5F001DB560 /* BookListPresenterProtocol.swift in Sources */,
 				367AE60A280ECF25001DB560 /* MyLibraryApp.swift in Sources */,
 				367AE644280F04B3001DB560 /* BookListFactory.swift in Sources */,
