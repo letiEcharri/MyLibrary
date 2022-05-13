@@ -12,23 +12,30 @@ struct BookListContentView<T: BookListPresenterProtocol>: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                HStack {
-                    TextField("Search results for books, authors, and more",
-                              text: $presenter.viewModel.searchedText)
-                        .accentColor(.black)
-                        .foregroundColor(.black)
-                        .onSubmit {
-                            self.presenter.search()
-                        }
+            List {
+                Section {
+                    HStack {
+                        TextField("Search for books, authors...",
+                                  text: $presenter.viewModel.searchedText)
+                            .frame(height: 50)
+                            .accentColor(.black)
+                            .foregroundColor(.black)
+                            .onSubmit {
+                                self.presenter.search()
+                            }
+                        Image(systemName: "magnifyingglass")
+                    }
+                    .navigationTitle("MyLibrary")
                 }
-                .frame(height: 50)
-                List(presenter.viewModel.searchedBookList, id: \.self) { book in
-                    Text(book)
+                
+                Section {
+                    ForEach(presenter.viewModel.searchedBookList, id: \.self) { book in
+                        Text(book)
+                    }
                 }
             }
-            .navigationTitle("MyLibrary")
         }
+        .navigationViewStyle(.stack)
     }
 }
 
