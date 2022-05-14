@@ -7,8 +7,9 @@
 
 import Foundation
 
-protocol BookListPresenterProtocol: ObservableObject {
+protocol BookListPresenterProtocol where Self: Presenter {
     var viewModel: BookListViewModel { get set }
     
     func search()
+    func selectItem(with id: String)
 }
