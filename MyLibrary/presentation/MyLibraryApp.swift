@@ -11,7 +11,7 @@ import SwiftUI
 struct MyLibraryApp: App {
     var body: some Scene {
         WindowGroup {
-            BookListFactory.make()
+            BookListFactory.make().modifier(NavigationBarModifier())
         }
     }
 }
