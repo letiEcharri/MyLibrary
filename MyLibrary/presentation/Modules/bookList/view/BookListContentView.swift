@@ -28,20 +28,19 @@ struct BookListContentView<T: BookListPresenterProtocol>: View {
                                 }
                             Image(systemName: "magnifyingglass")
                         }
-                        .navigationTitle("MyLibrary")
                     }
                     
                     Section {
                         ForEach(presenter.viewModel.searchedBookList, id: \.self) { book in
-                            Button {
-                                self.presenter.selectItem(with: book.id)
-                            } label: {
-                                Text(book.text)
+                            NavigationLink(book.text) {
+                                BookDetailFactory.make(with: self.presenter.getDetailViewModel(with: book.id))
                             }
-                            .tint(.black)
                         }
                     }
                 }
+                .padding([.top], 0.5)
+                .background(Color.backgroundGrey)
+                .navigationBarTitle("MyLibrary", displayMode: .large)
 
             }
             .navigationViewStyle(.stack)

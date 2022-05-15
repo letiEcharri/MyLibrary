@@ -11,5 +11,5 @@ protocol BookListPresenterProtocol where Self: Presenter {
     var viewModel: BookListViewModel { get set }
     
     func search()
-    func selectItem(with id: String)
+    func getDetailViewModel(with bookID: String) -> BookDetailViewModel
 }
