@@ -33,23 +33,24 @@ struct BookListView<MT: BookListViewModel>: View {
     }
     
     var body: some View {
-        NavigationView {
-            
-            List {
-                Section {
-                    searchBar
+        LoadingView(isShowing: $viewModel.loading) {
+            NavigationView {
+                List {
+                    Section {
+                        searchBar
+                    }
+                    
+                    Section {
+                        listRow
+                    }
                 }
-                
-                Section {
-                    listRow
-                }
-            }
-            .padding([.top], 0.5)
-            .background(Color.backgroundGrey)
-            .navigationBarTitle("MyLibrary", displayMode: .large)
+                .padding([.top], 0.5)
+                .background(Color.backgroundGrey)
+                .navigationBarTitle("MyLibrary", displayMode: .large)
 
+            }
+            .navigationViewStyle(.stack)
         }
-        .navigationViewStyle(.stack)
     }
     
     func search() {
