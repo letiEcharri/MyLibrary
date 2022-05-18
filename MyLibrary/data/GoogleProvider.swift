@@ -7,21 +7,14 @@
 
 import Foundation
 
-enum GoogleDataSourceModule: String {
-    case volumes
-    
-    var path: String { "/books/v1/" + rawValue }
-}
-
-class GoogleProvider {
-    
-    var urlBase: String {
-        "https://www.googleapis.com"
+struct GoogleProvider {
+    enum Module: String {
+        case volumes
+        
+        var path: String { "/books/v1/" + rawValue }
     }
     
-    var manager: DataSource
-        
-    init(_ manager: DataSource) {
-        self.manager = manager
+    static var urlBase: String {
+        "https://www.googleapis.com"
     }
 }
