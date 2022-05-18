@@ -5,7 +5,7 @@
 //  Created by Leticia Echarri on 18/5/22.
 //
 
-import SwiftUI
+import Foundation
 
 protocol BookListViewModel: ObservableObject {
     var books: [Book] { get }
@@ -15,7 +15,7 @@ protocol BookListViewModel: ObservableObject {
 }
 
 class BookListViewModelImpl: BookListViewModel {
-    var searchBooksUseCase = SearchBooksUseCase(repository: BookRepositoryImpl(dataSource: BookAPIImpl()))
+    var searchBooksUseCase: SearchBooks = SearchBooksUseCase(repository: BookRepositoryImpl(dataSource: BookAPIImpl()))
     @Published var books: [Book] = []
     @Published var searchedText = ""
     @Published var loading = false
@@ -30,7 +30,10 @@ class BookListViewModelImpl: BookListViewModel {
                 self.books = books
             }
         case .failure:
-            books = []
+            DispatchQueue.main.async {
+                self.loading = false
+                self.books = []
+            }
         }
     }
 }
