@@ -26,6 +26,7 @@
 		365DBE2D2834E1A7009FAC33 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DBE2C2834E1A7009FAC33 /* BookListViewModel.swift */; };
 		365DBE30283522DA009FAC33 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DBE2F283522DA009FAC33 /* Factory.swift */; };
 		365DBE3228352A96009FAC33 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DBE3128352A96009FAC33 /* BookDetailViewModel.swift */; };
+		365DBE372836308D009FAC33 /* SearchFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DBE362836308D009FAC33 /* SearchFiltersView.swift */; };
 		367AE60A280ECF25001DB560 /* MyLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE609280ECF25001DB560 /* MyLibraryApp.swift */; };
 		367AE60E280ECF28001DB560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367AE60D280ECF28001DB560 /* Assets.xcassets */; };
 		367AE611280ECF28001DB560 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367AE610280ECF28001DB560 /* Preview Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		365DBE2C2834E1A7009FAC33 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		365DBE2F283522DA009FAC33 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		365DBE3128352A96009FAC33 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		365DBE362836308D009FAC33 /* SearchFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersView.swift; sourceTree = "<group>"; };
 		367AE606280ECF25001DB560 /* MyLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367AE609280ECF25001DB560 /* MyLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryApp.swift; sourceTree = "<group>"; };
 		367AE60D280ECF28001DB560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -222,6 +224,14 @@
 			path = bookList;
 			sourceTree = "<group>";
 		};
+		365DBE3328354B46009FAC33 /* searchFilters */ = {
+			isa = PBXGroup;
+			children = (
+				365DBE362836308D009FAC33 /* SearchFiltersView.swift */,
+			);
+			path = searchFilters;
+			sourceTree = "<group>";
+		};
 		367AE5FD280ECF25001DB560 = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +315,7 @@
 		367AE63B280EF91D001DB560 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				365DBE3328354B46009FAC33 /* searchFilters */,
 				3603414A283029600089F6F7 /* bookDetail */,
 				367AE63A280EF910001DB560 /* bookList */,
 			);
@@ -441,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				365DBE372836308D009FAC33 /* SearchFiltersView.swift in Sources */,
 				365DBE2128340862009FAC33 /* BookAPIImpl.swift in Sources */,
 				361BBC7E28312AD000726113 /* Date+Functions.swift in Sources */,
 				365DBE2D2834E1A7009FAC33 /* BookListViewModel.swift in Sources */,

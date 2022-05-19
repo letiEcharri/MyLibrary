@@ -19,7 +19,7 @@ struct BookAPIImpl: BookDataSource {
         }
         components.path = GoogleProvider.Module.volumes.path
         components.queryItems = [
-            URLQueryItem(name: "q", value: text),
+            URLQueryItem(name: "q", value: text.replacingOccurrences(of: " ", with: "+")),
         ]
         guard let url = components.url else {
             throw APIServiceError.badUrl

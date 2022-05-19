@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BookListView<MT: BookListViewModel>: View {
     @ObservedObject var viewModel: MT
+    @State private var showFilters = false
+    @State var filter = Filter(searhBy: .none)
     
     var searchBar: some View {
         HStack {
@@ -18,10 +20,19 @@ struct BookListView<MT: BookListViewModel>: View {
                 .accentColor(.black)
                 .foregroundColor(.black)
                 .onSubmit {
+                    print(filter)
                     self.search()
                 }
-            Image(systemName: "magnifyingglass")
+            Button {
+                self.showFilters = true
+            } label: {
+                Image(systemName: "slider.horizontal.3")
+            }
         }
+        .sheet(isPresented: $showFilters, content: {
+            Factory.searchFilters($filter).make()
+        })
+
     }
     
     var listRow: some View {
