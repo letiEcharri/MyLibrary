@@ -7,17 +7,12 @@
 
 import SwiftUI
 
-struct SearchFiltersView: View {
+struct SearchFiltersView<MT: SearchFiltersViewModel>: View {
     @Environment(\.presentationMode) var presentation
-    var onDismiss: ((_ model: Filter) -> Void)?
-    @Binding var filter: Filter
+    @ObservedObject var viewModel: MT
+    var onDismiss: ((_ model: Binding<Filter>) -> Void)?
     
-    @State var filterItems: [SearchFiltersItem] = [
-        .init(title: "Título", active: false),
-        .init(title: "Autor", active: false),
-        .init(title: "Categoría", active: false),
-        .init(title: "ISBN", active: false)
-    ]
+    @State var filterItems: [SearchFiltersItem] = []
     
     var searchBy: some View {
         ScrollView {
@@ -59,45 +54,51 @@ struct SearchFiltersView: View {
             .padding()
             .navigationBarTitle("FILTROS", displayMode: .inline)
         }
+        .onAppear(perform: {
+            filterItems = getFilters()
+        })
         .onDisappear {
-            onDismiss?(filter)
+            onDismiss?(viewModel.filter)
         }
     }
     
     private func searchByButtonAction(_ item: SearchFiltersItem) {
         switch item.title {
         case "Título":
-            filter.searhBy = .title
+            viewModel.filter.wrappedValue = .title
         case "Autor":
-            filter.searhBy = .author
+            viewModel.filter.wrappedValue = .author
         case "Categoría":
-            filter.searhBy = .category
+            viewModel.filter.wrappedValue = .category
         case "ISBN":
-            filter.searhBy = .isbn
+            viewModel.filter.wrappedValue = .isbn
         default:
-            filter.searhBy = .none
+            viewModel.filter.wrappedValue = .none
         }
+    }
+    
+    private func getFilters() -> [SearchFiltersItem] {
+        return [
+            .init(title: "Título", active: viewModel.filter.wrappedValue == .title),
+            .init(title: "Autor", active: viewModel.filter.wrappedValue == .author),
+            .init(title: "Categoría", active: viewModel.filter.wrappedValue == .category),
+            .init(title: "ISBN", active: viewModel.filter.wrappedValue == .isbn)
+        ]
     }
 }
 
 struct SearchFiltersView_Previews: PreviewProvider {
-    @State static var filter = Filter(searhBy: .none)
-    
     static var previews: some View {
-        Factory.searchFilters($filter).make()
+        Factory.searchFilters(viewModel: .init(.constant(.title))).make()
     }
 }
 
-struct Filter {
-    var searhBy: Search
-    
-    enum Search {
-        case none
-        case title
-        case author
-        case category
-        case isbn
-    }
+enum Filter {
+    case none
+    case title
+    case author
+    case category
+    case isbn
 }
 
 struct SearchFiltersItem: Hashable {
@@ -106,7 +107,7 @@ struct SearchFiltersItem: Hashable {
 }
 
 extension Factory {
-    internal func makeSearchFiltersView(_ filter: Binding<Filter>) -> some View {
-        SearchFiltersView(filter: filter).modifier(NavigationBarModifier())
+    internal func makeSearchFiltersView(with viewModel: SearchFiltersViewModelImpl) -> some View {
+        SearchFiltersView(viewModel: viewModel).modifier(NavigationBarModifier())
     }
 }

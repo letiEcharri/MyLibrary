@@ -33,6 +33,7 @@
 		367AE61B280ECF28001DB560 /* MyLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE61A280ECF28001DB560 /* MyLibraryTests.swift */; };
 		367AE625280ECF28001DB560 /* MyLibraryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE624280ECF28001DB560 /* MyLibraryUITests.swift */; };
 		367AE627280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE626280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift */; };
+		36B3EFB9283667AB0012F312 /* SearchFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3EFB8283667AB0012F312 /* SearchFiltersViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		367AE620280ECF28001DB560 /* MyLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		367AE624280ECF28001DB560 /* MyLibraryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryUITests.swift; sourceTree = "<group>"; };
 		367AE626280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		36B3EFB8283667AB0012F312 /* SearchFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				365DBE362836308D009FAC33 /* SearchFiltersView.swift */,
+				36B3EFB8283667AB0012F312 /* SearchFiltersViewModel.swift */,
 			);
 			path = searchFilters;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				365DBE30283522DA009FAC33 /* Factory.swift in Sources */,
 				367AE60A280ECF25001DB560 /* MyLibraryApp.swift in Sources */,
 				365DBE2328340B83009FAC33 /* Book.swift in Sources */,
+				36B3EFB9283667AB0012F312 /* SearchFiltersViewModel.swift in Sources */,
 				3603414D28302A6E0089F6F7 /* BookDetailView.swift in Sources */,
 				36034130282FFA120089F6F7 /* GoogleProvider.swift in Sources */,
 				365DBE2628340BD2009FAC33 /* BookRepository.swift in Sources */,
