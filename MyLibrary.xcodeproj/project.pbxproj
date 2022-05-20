@@ -34,6 +34,7 @@
 		367AE625280ECF28001DB560 /* MyLibraryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE624280ECF28001DB560 /* MyLibraryUITests.swift */; };
 		367AE627280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE626280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift */; };
 		36B3EFB9283667AB0012F312 /* SearchFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3EFB8283667AB0012F312 /* SearchFiltersViewModel.swift */; };
+		36B3EFBB283795B70012F312 /* SearchFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3EFBA283795B70012F312 /* SearchFiltersModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		367AE624280ECF28001DB560 /* MyLibraryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryUITests.swift; sourceTree = "<group>"; };
 		367AE626280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		36B3EFB8283667AB0012F312 /* SearchFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersViewModel.swift; sourceTree = "<group>"; };
+		36B3EFBA283795B70012F312 /* SearchFiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				36034134282FFC860089F6F7 /* VolumesModel.swift */,
 				365DBE2228340B83009FAC33 /* Book.swift */,
 				3603413C283002F40089F6F7 /* GoogleErrorModel.swift */,
+				36B3EFBA283795B70012F312 /* SearchFiltersModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				36B3EFB9283667AB0012F312 /* SearchFiltersViewModel.swift in Sources */,
 				3603414D28302A6E0089F6F7 /* BookDetailView.swift in Sources */,
 				36034130282FFA120089F6F7 /* GoogleProvider.swift in Sources */,
+				36B3EFBB283795B70012F312 /* SearchFiltersModel.swift in Sources */,
 				365DBE2628340BD2009FAC33 /* BookRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

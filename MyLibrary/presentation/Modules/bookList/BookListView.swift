@@ -10,7 +10,6 @@ import SwiftUI
 struct BookListView<MT: BookListViewModel>: View {
     @ObservedObject var viewModel: MT
     @State private var showFilters = false
-    @State private var filter = Filter.none
     
     var searchBar: some View {
         HStack {
@@ -29,7 +28,7 @@ struct BookListView<MT: BookListViewModel>: View {
             }
         }
         .sheet(isPresented: $showFilters, content: {
-            Factory.searchFilters(viewModel: .init($filter)).make()
+            Factory.searchFilters(viewModel: .init($viewModel.filter)).make()
         })
 
     }

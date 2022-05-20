@@ -8,21 +8,21 @@
 import SwiftUI
 
 protocol SearchFiltersViewModel: ObservableObject {
-    var filter: Binding<Filter> { get set }
-    var filterItems: [SearchFiltersItem] { get set }
+    var filter: Binding<SearchFiltersItem> { get set }
+    var filterItems: [SearchFiltersItem.MainFilter] { get set }
 }
 
 class SearchFiltersViewModelImpl: SearchFiltersViewModel {
-    @Published var filter: Binding<Filter>
-    @Published var filterItems: [SearchFiltersItem]
+    @Published var filter: Binding<SearchFiltersItem>
+    @Published var filterItems: [SearchFiltersItem.MainFilter]
         
-    init(_ filter: Binding<Filter>) {
+    init(_ filter: Binding<SearchFiltersItem>) {
         self.filter = filter
         filterItems = [
-            .init(title: Filter.title, active: filter.wrappedValue == .title),
-            .init(title: Filter.author, active: filter.wrappedValue == .author),
-            .init(title: Filter.category, active: filter.wrappedValue == .category),
-            .init(title: Filter.isbn, active: filter.wrappedValue == .isbn)
+            .init(title: SearchFiltersItem.Filter.title, active: filter.mainFilter.title.wrappedValue == .title),
+            .init(title: SearchFiltersItem.Filter.author, active: filter.mainFilter.title.wrappedValue == .author),
+            .init(title: SearchFiltersItem.Filter.category, active: filter.mainFilter.title.wrappedValue == .category),
+            .init(title: SearchFiltersItem.Filter.isbn, active: filter.mainFilter.title.wrappedValue == .isbn)
         ]
     }
 }
