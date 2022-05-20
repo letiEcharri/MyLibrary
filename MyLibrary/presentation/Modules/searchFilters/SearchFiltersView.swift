@@ -11,18 +11,16 @@ struct SearchFiltersView<MT: SearchFiltersViewModel>: View {
     @Environment(\.presentationMode) var presentation
     @ObservedObject var viewModel: MT
     var onDismiss: ((_ model: Binding<Filter>) -> Void)?
-    
-    @State var filterItems: [SearchFiltersItem] = []
-    
+        
     var searchBy: some View {
         ScrollView {
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
-                ForEach($filterItems, id: \.self) { $item in
+                ForEach($viewModel.filterItems, id: \.self) { $item in
                     Button {
                         item.active.toggle()
                         searchByButtonAction(item)
                     } label: {
-                        Text(item.title)
+                        Text(item.title.rawValue)
                          .font(.system(size: 18))
                          .foregroundColor(item.active ? .white : .black)
                          .frame(width: 100, height: 50, alignment: .center)
@@ -54,36 +52,18 @@ struct SearchFiltersView<MT: SearchFiltersViewModel>: View {
             .padding()
             .navigationBarTitle("FILTROS", displayMode: .inline)
         }
-        .onAppear(perform: {
-            filterItems = getFilters()
-        })
         .onDisappear {
             onDismiss?(viewModel.filter)
         }
     }
     
     private func searchByButtonAction(_ item: SearchFiltersItem) {
-        switch item.title {
-        case "Título":
-            viewModel.filter.wrappedValue = .title
-        case "Autor":
-            viewModel.filter.wrappedValue = .author
-        case "Categoría":
-            viewModel.filter.wrappedValue = .category
-        case "ISBN":
-            viewModel.filter.wrappedValue = .isbn
-        default:
-            viewModel.filter.wrappedValue = .none
+        viewModel.filter.wrappedValue = item.active ? item.title : .none
+        for filter in $viewModel.filterItems {
+            if filter.title.wrappedValue != item.title {
+                filter.wrappedValue.active = false
+            }
         }
-    }
-    
-    private func getFilters() -> [SearchFiltersItem] {
-        return [
-            .init(title: "Título", active: viewModel.filter.wrappedValue == .title),
-            .init(title: "Autor", active: viewModel.filter.wrappedValue == .author),
-            .init(title: "Categoría", active: viewModel.filter.wrappedValue == .category),
-            .init(title: "ISBN", active: viewModel.filter.wrappedValue == .isbn)
-        ]
     }
 }
 
@@ -93,16 +73,16 @@ struct SearchFiltersView_Previews: PreviewProvider {
     }
 }
 
-enum Filter {
+enum Filter: String {
     case none
-    case title
-    case author
-    case category
-    case isbn
+    case title = "Título"
+    case author = "Autor"
+    case category = "Categoría"
+    case isbn = "ISBN"
 }
 
 struct SearchFiltersItem: Hashable {
-    var title: String
+    var title: Filter
     var active: Bool
 }
 

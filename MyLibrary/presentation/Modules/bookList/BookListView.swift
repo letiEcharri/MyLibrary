@@ -20,7 +20,6 @@ struct BookListView<MT: BookListViewModel>: View {
                 .accentColor(.black)
                 .foregroundColor(.black)
                 .onSubmit {
-                    print(filter)
                     self.search()
                 }
             Button {
