@@ -30,7 +30,11 @@ struct BookListView<MT: BookListViewModel>: View {
         .sheet(isPresented: $showFilters, content: {
             Factory.searchFilters(viewModel: .init($viewModel.filter)).make()
         })
-
+        .onChange(of: viewModel.filter.searchActive) { newValue in
+            if viewModel.filter.searchActive {
+                self.search()
+            }
+        }
     }
     
     var listRow: some View {

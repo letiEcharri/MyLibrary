@@ -10,8 +10,8 @@ import SwiftUI
 struct SearchFiltersView<MT: SearchFiltersViewModel>: View {
     @Environment(\.presentationMode) var presentation
     @ObservedObject var viewModel: MT
-    var onDismiss: ((_ model: Binding<SearchFiltersItem>) -> Void)?
     @State var searchType: SearchFiltersItem.ItemType = .all
+    @State var orderBy: SearchFiltersItem.Sort = .relevance
         
     var searchBy: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
@@ -56,6 +56,41 @@ struct SearchFiltersView<MT: SearchFiltersViewModel>: View {
         }
     }
     
+    var orderByView: some View {
+        VStack(alignment: .leading) {
+            Text("Ordenar por:")
+                .font(.system(size: 18).italic())
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Picker("", selection: $orderBy) {
+                ForEach(SearchFiltersItem.Sort.allCases, id: \.self) {
+                    Text("\($0.rawValue)")
+                }
+            }
+            .onChange(of: orderBy, perform: { newValue in
+                viewModel.filter.orderBy.wrappedValue = newValue
+            })
+            .pickerStyle(MenuPickerStyle())
+            
+        }
+    }
+    
+    var searchButton: some View {
+        HStack(alignment: .center) {
+            Spacer()
+            Button {
+                viewModel.filter.searchActive.wrappedValue = true
+                presentation.wrappedValue.dismiss()
+            } label: {
+                Text("BUSCAR")
+                    .font(.system(size: 18, weight: .bold))
+                 .foregroundColor(.white)
+                 .frame(width: 100, height: 50, alignment: .center)
+            }
+            .buttonStyle(.borderedProminent)
+            Spacer()
+        }
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -65,6 +100,8 @@ struct SearchFiltersView<MT: SearchFiltersViewModel>: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     searchBy
                     searchTypeView
+                    orderByView
+                    searchButton
                 }
             }
             .padding()
@@ -76,10 +113,9 @@ struct SearchFiltersView<MT: SearchFiltersViewModel>: View {
             UISegmentedControl.appearance().selectedSegmentTintColor = uiBlue
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
             UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: uiBlue], for: .normal)
+            searchType = viewModel.filter.itemType.wrappedValue
+            orderBy = viewModel.filter.orderBy.wrappedValue
         })
-        .onDisappear {
-            onDismiss?(viewModel.filter)
-        }
     }
     
     private func searchByButtonAction(_ item: SearchFiltersItem.MainFilter) {
@@ -103,6 +139,8 @@ struct SearchFiltersView_Previews: PreviewProvider {
 struct SearchFiltersItem: Hashable {
     var mainFilter: MainFilter
     var itemType: ItemType = .all
+    var orderBy: Sort = .relevance
+    var searchActive: Bool = false
     
     struct MainFilter: Hashable {
         var title: Filter = .none
@@ -121,6 +159,13 @@ struct SearchFiltersItem: Hashable {
         case all = "Todos"
         case books = "Libros"
         case magazines = "Revistas"
+        
+        var id: String { self.rawValue }
+    }
+    
+    enum Sort: String, CaseIterable, Identifiable {
+        case relevance = "Relevancia"
+        case newest = "Novedad"
         
         var id: String { self.rawValue }
     }

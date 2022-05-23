@@ -10,11 +10,17 @@ import Foundation
 struct SearchFiltersModel {
     var mainFilter: SearchFiltersItem.Filter
     var itemType: ItemType = .all
+    var orderBy: Sort = .relevance
     
     enum ItemType: String {
         case all
         case books
         case magazines
+    }
+    
+    enum Sort: String {
+        case relevance
+        case newest
     }
     
     mutating func setType(with viewModel: SearchFiltersItem) {
@@ -25,6 +31,15 @@ struct SearchFiltersModel {
             itemType = .books
         case .magazines:
             itemType = .magazines
+        }
+    }
+    
+    mutating func setSort(with viewModel: SearchFiltersItem) {
+        switch viewModel.orderBy {
+        case .relevance:
+            orderBy = .relevance
+        case .newest:
+            orderBy = .newest
         }
     }
 }

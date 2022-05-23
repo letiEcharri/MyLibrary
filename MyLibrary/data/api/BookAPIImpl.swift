@@ -19,7 +19,8 @@ struct BookAPIImpl: BookDataSource {
         }
         components.path = GoogleProvider.Module.volumes.path
         components.queryItems = [
-            URLQueryItem(name: "q", value: filterQuery(filters) + text)
+            URLQueryItem(name: "q", value: filterQuery(filters) + text),
+            URLQueryItem(name: "orderBy", value: filters.orderBy.rawValue)
         ]
         if filters.itemType != .all {
             components.queryItems?.append(URLQueryItem(name: "printType", value: filters.itemType.rawValue))

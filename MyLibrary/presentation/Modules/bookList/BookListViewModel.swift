@@ -24,8 +24,9 @@ class BookListViewModelImpl: BookListViewModel {
     
     func search() async {
         loading = true
-        var viewFilters = SearchFiltersModel(mainFilter: filter.mainFilter.title, itemType: .all)
+        var viewFilters = SearchFiltersModel(mainFilter: filter.mainFilter.title)
         viewFilters.setType(with: filter)
+        viewFilters.setSort(with: filter)
         let result = await searchBooksUseCase.search(with: searchedText, filters: viewFilters)
         switch result {
         case .success(let books):
