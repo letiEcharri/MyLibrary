@@ -23,6 +23,7 @@ class BookListViewModelImpl: BookListViewModel {
     @Published var filter: SearchFiltersItem = .init(mainFilter: .init())
     
     func search() async {
+        filter.searchActive = false
         loading = true
         var viewFilters = SearchFiltersModel(mainFilter: filter.mainFilter.title)
         viewFilters.setType(with: filter)
