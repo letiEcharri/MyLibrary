@@ -26,12 +26,15 @@
 		365DBE2D2834E1A7009FAC33 /* BookListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DBE2C2834E1A7009FAC33 /* BookListViewModel.swift */; };
 		365DBE30283522DA009FAC33 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DBE2F283522DA009FAC33 /* Factory.swift */; };
 		365DBE3228352A96009FAC33 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DBE3128352A96009FAC33 /* BookDetailViewModel.swift */; };
+		365DBE372836308D009FAC33 /* SearchFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DBE362836308D009FAC33 /* SearchFiltersView.swift */; };
 		367AE60A280ECF25001DB560 /* MyLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE609280ECF25001DB560 /* MyLibraryApp.swift */; };
 		367AE60E280ECF28001DB560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367AE60D280ECF28001DB560 /* Assets.xcassets */; };
 		367AE611280ECF28001DB560 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367AE610280ECF28001DB560 /* Preview Assets.xcassets */; };
 		367AE61B280ECF28001DB560 /* MyLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE61A280ECF28001DB560 /* MyLibraryTests.swift */; };
 		367AE625280ECF28001DB560 /* MyLibraryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE624280ECF28001DB560 /* MyLibraryUITests.swift */; };
 		367AE627280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AE626280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift */; };
+		36B3EFB9283667AB0012F312 /* SearchFiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3EFB8283667AB0012F312 /* SearchFiltersViewModel.swift */; };
+		36B3EFBB283795B70012F312 /* SearchFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B3EFBA283795B70012F312 /* SearchFiltersModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,7 @@
 		365DBE2C2834E1A7009FAC33 /* BookListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewModel.swift; sourceTree = "<group>"; };
 		365DBE2F283522DA009FAC33 /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		365DBE3128352A96009FAC33 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		365DBE362836308D009FAC33 /* SearchFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersView.swift; sourceTree = "<group>"; };
 		367AE606280ECF25001DB560 /* MyLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		367AE609280ECF25001DB560 /* MyLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryApp.swift; sourceTree = "<group>"; };
 		367AE60D280ECF28001DB560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 		367AE620280ECF28001DB560 /* MyLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		367AE624280ECF28001DB560 /* MyLibraryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryUITests.swift; sourceTree = "<group>"; };
 		367AE626280ECF28001DB560 /* MyLibraryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibraryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		36B3EFB8283667AB0012F312 /* SearchFiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersViewModel.swift; sourceTree = "<group>"; };
+		36B3EFBA283795B70012F312 /* SearchFiltersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +192,7 @@
 				36034134282FFC860089F6F7 /* VolumesModel.swift */,
 				365DBE2228340B83009FAC33 /* Book.swift */,
 				3603413C283002F40089F6F7 /* GoogleErrorModel.swift */,
+				36B3EFBA283795B70012F312 /* SearchFiltersModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -220,6 +227,15 @@
 				365DBE282834DF0E009FAC33 /* SearchBooksUseCase.swift */,
 			);
 			path = bookList;
+			sourceTree = "<group>";
+		};
+		365DBE3328354B46009FAC33 /* searchFilters */ = {
+			isa = PBXGroup;
+			children = (
+				365DBE362836308D009FAC33 /* SearchFiltersView.swift */,
+				36B3EFB8283667AB0012F312 /* SearchFiltersViewModel.swift */,
+			);
+			path = searchFilters;
 			sourceTree = "<group>";
 		};
 		367AE5FD280ECF25001DB560 = {
@@ -305,6 +321,7 @@
 		367AE63B280EF91D001DB560 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				365DBE3328354B46009FAC33 /* searchFilters */,
 				3603414A283029600089F6F7 /* bookDetail */,
 				367AE63A280EF910001DB560 /* bookList */,
 			);
@@ -441,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				365DBE372836308D009FAC33 /* SearchFiltersView.swift in Sources */,
 				365DBE2128340862009FAC33 /* BookAPIImpl.swift in Sources */,
 				361BBC7E28312AD000726113 /* Date+Functions.swift in Sources */,
 				365DBE2D2834E1A7009FAC33 /* BookListViewModel.swift in Sources */,
@@ -458,8 +476,10 @@
 				365DBE30283522DA009FAC33 /* Factory.swift in Sources */,
 				367AE60A280ECF25001DB560 /* MyLibraryApp.swift in Sources */,
 				365DBE2328340B83009FAC33 /* Book.swift in Sources */,
+				36B3EFB9283667AB0012F312 /* SearchFiltersViewModel.swift in Sources */,
 				3603414D28302A6E0089F6F7 /* BookDetailView.swift in Sources */,
 				36034130282FFA120089F6F7 /* GoogleProvider.swift in Sources */,
+				36B3EFBB283795B70012F312 /* SearchFiltersModel.swift in Sources */,
 				365DBE2628340BD2009FAC33 /* BookRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,15 +12,15 @@ enum UseCaseError: Error{
 }
 
 protocol SearchBooks {
-    func search(with text: String) async -> Result<[Book], UseCaseError>
+    func search(with text: String, filters: SearchFiltersModel) async -> Result<[Book], UseCaseError>
 }
 
 struct SearchBooksUseCase: SearchBooks {
     var repository: BookRepository
     
-    func search(with text: String) async -> Result<[Book], UseCaseError> {
+    func search(with text: String, filters: SearchFiltersModel) async -> Result<[Book], UseCaseError> {
         do {
-            let books = try await repository.search(with: text)
+            let books = try await repository.search(with: text, filters: filters)
             return .success(books)
         } catch {
             switch error {

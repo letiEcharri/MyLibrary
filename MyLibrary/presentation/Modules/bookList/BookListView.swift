@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BookListView<MT: BookListViewModel>: View {
     @ObservedObject var viewModel: MT
+    @State private var showFilters = false
     
     var searchBar: some View {
         HStack {
@@ -20,7 +21,19 @@ struct BookListView<MT: BookListViewModel>: View {
                 .onSubmit {
                     self.search()
                 }
-            Image(systemName: "magnifyingglass")
+            Button {
+                self.showFilters = true
+            } label: {
+                Image(systemName: "slider.horizontal.3")
+            }
+        }
+        .sheet(isPresented: $showFilters, content: {
+            Factory.searchFilters(viewModel: .init($viewModel.filter)).make()
+        })
+        .onChange(of: viewModel.filter.searchActive) { newValue in
+            if viewModel.filter.searchActive {
+                self.search()
+            }
         }
     }
     

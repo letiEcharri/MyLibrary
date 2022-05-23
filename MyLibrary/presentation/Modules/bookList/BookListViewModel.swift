@@ -11,6 +11,7 @@ protocol BookListViewModel: ObservableObject {
     var books: [Book] { get }
     var searchedText: String { get set }
     var loading: Bool { get set }
+    var filter: SearchFiltersItem { get set }
     func search() async
 }
 
@@ -19,10 +20,14 @@ class BookListViewModelImpl: BookListViewModel {
     @Published var books: [Book] = []
     @Published var searchedText = ""
     @Published var loading = false
+    @Published var filter: SearchFiltersItem = .init(mainFilter: .init())
     
     func search() async {
         loading = true
-        let result = await searchBooksUseCase.search(with: searchedText)
+        var viewFilters = SearchFiltersModel(mainFilter: filter.mainFilter.title)
+        viewFilters.setType(with: filter)
+        viewFilters.setSort(with: filter)
+        let result = await searchBooksUseCase.search(with: searchedText, filters: viewFilters)
         switch result {
         case .success(let books):
             DispatchQueue.main.async {

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol BookDataSource {
-    func search(with text: String) async throws -> [Book]
+    func search(with text: String, filters: SearchFiltersModel) async throws -> [Book]
 }

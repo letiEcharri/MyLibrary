@@ -13,14 +13,18 @@ enum APIServiceError: Error {
 
 struct BookAPIImpl: BookDataSource {
     
-    func search(with text: String) async throws -> [Book] {
+    func search(with text: String, filters: SearchFiltersModel) async throws -> [Book] {
         guard var components = URLComponents(string: GoogleProvider.urlBase) else {
             throw APIServiceError.badUrl
         }
         components.path = GoogleProvider.Module.volumes.path
         components.queryItems = [
-            URLQueryItem(name: "q", value: text),
+            URLQueryItem(name: "q", value: filterQuery(filters) + text),
+            URLQueryItem(name: "orderBy", value: filters.orderBy.rawValue)
         ]
+        if filters.itemType != .all {
+            components.queryItems?.append(URLQueryItem(name: "printType", value: filters.itemType.rawValue))
+        }
         guard let url = components.url else {
             throw APIServiceError.badUrl
         }
@@ -56,5 +60,23 @@ struct BookAPIImpl: BookDataSource {
                  infoLink: item.volumeInfo.infoLink,
                  canonicalVolumeLink: item.volumeInfo.canonicalVolumeLink)
         }
+    }
+    
+    private func filterQuery(_ filter: SearchFiltersModel) -> String {
+        var text: String
+        switch filter.mainFilter {
+        case .title:
+            text = "intitle:"
+        case .isbn:
+            text = "isbn:"
+        case .category:
+            text = "subject:"
+        case .author:
+            text = "inauthor:"
+        case .none:
+            text = ""
+        }
+        
+        return text
     }
 }
